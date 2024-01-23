@@ -14,7 +14,6 @@ body {
   flex-direction: column;
   width: 100%;
   max-width: 800px;
-  padding: 20px;
   border: none;
 }
 @media (min-width: 768px) {
@@ -22,7 +21,8 @@ body {
     margin: auto;
     border: 1px solid #ccc;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: 800px;
+    max-height: 800px;
+    height: 100vh;
     max-width: 728px;
   }
 }
@@ -59,22 +59,6 @@ body {
   margin: 0 5px;
   padding: 5px 10px;
   cursor: pointer;
-}
-
-@media (min-width: 992px) {
-  .widget-container {
-    width: 100%;
-  }
-  .weekly-forecast {
-    display: flex;
-    justify-content: space-between;
-  }
-  .weekly-forecast .carousel-container {
-    width: 60%;
-  }
-  .weekly-forecast .pagination {
-    width: 30%;
-  }
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -25,14 +25,14 @@ body {
     flex-direction: column;
     width: 100%;
     max-width: 800px;
-    padding: 20px;
     border: none;
 
     @media (min-width: map-get($breakpoints, md)) {
         margin: auto;
         border: 1px solid #ccc;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        height: 800px;
+        max-height: 800px;
+        height: 100vh;
         max-width: calc(map-get($breakpoints, md) - 40px);
     }
 }
@@ -78,21 +78,3 @@ body {
     }
 }
 
-@media (min-width: map-get($breakpoints, lg)) {
-    .widget-container {
-        width: 100%;
-    }
-
-    .weekly-forecast {
-        display: flex;
-        justify-content: space-between;
-
-        .carousel-container {
-            width: 60%;
-        }
-
-        .pagination {
-            width: 30%;
-        }
-    }
-}
