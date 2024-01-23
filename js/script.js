@@ -12,7 +12,7 @@ function getDayOfWeek(dateString) {
 }
 
 function getWeather(city) {
-    const apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=7&aqi=no&alerts=no`;
+    const apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=8&aqi=no&alerts=no`;
     return $.get(apiUrl);
 }
 
@@ -21,12 +21,15 @@ function updateWidget(city) {
         const { location, current, forecast } = data;
         const temperature = `${current.temp_c}°C`;
         const conditionText = `${current.condition.text}`;
+        const minTempCurrentDay = `${forecast.forecastday[0].day.mintemp_c}`;
+        const maxTempCurrentDay = `${forecast.forecastday[0].day.maxtemp_c}`;
         
         $('.city-name').text(location.name);
         $('.temperature').text(temperature);
         $('.weather-text').text(conditionText);
+        $('.daily-temperature').text(`${minTempCurrentDay}/${maxTempCurrentDay}`);
 
-        const forecastHtml = forecast.forecastday.map(day => `
+        const forecastHtml = forecast.forecastday.slice(1, 8).map(day => `
             <div class="forecast-item">
             <div>${getDayOfWeek(day.date)}</div>
                 <img src="${day.day.condition.icon}">
