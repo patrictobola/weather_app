@@ -20,17 +20,17 @@ function updateWidget(city) {
     getWeather(city).done((data) => {
         const { location, current, forecast } = data;
         const temperature = `${current.temp_c}°C`;
-        const iconUrl = `http:${current.condition.icon}`;
+        const conditionText = `${current.condition.text}`;
         
         $('.city-name').text(location.name);
         $('.temperature').text(temperature);
-        $('.weather-icon').attr('src', iconUrl);
+        $('.weather-text').text(conditionText);
 
         const forecastHtml = forecast.forecastday.map(day => `
             <div class="forecast-item">
             <div>${getDayOfWeek(day.date)}</div>
-                <div>Min: ${day.day.mintemp_c}°C</div>
-                <div>Max: ${day.day.maxtemp_c}°C</div>
+                <img src="${day.day.condition.icon}">
+                <div>${day.day.mintemp_c}/${day.day.maxtemp_c}°C</div>
             </div>
         `).join('');
 
