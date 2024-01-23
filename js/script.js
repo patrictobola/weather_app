@@ -33,7 +33,7 @@ function updateWidget(city) {
             <div class="forecast-item">
             <div>${getDayOfWeek(day.date)}</div>
                 <img src="${day.day.condition.icon}">
-                <div>${day.day.mintemp_c}/${day.day.maxtemp_c}°C</div>
+                <div class="forecast-daily-temp">${day.day.mintemp_c}/${day.day.maxtemp_c}°C</div>
             </div>
         `).join('');
 
