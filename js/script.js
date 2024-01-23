@@ -21,19 +21,19 @@ function updateWidget(city) {
         const { location, current, forecast } = data;
         const temperature = `${current.temp_c}°C`;
         const conditionText = `${current.condition.text}`;
-        const minTempCurrentDay = `${forecast.forecastday[0].day.mintemp_c}`;
-        const maxTempCurrentDay = `${forecast.forecastday[0].day.maxtemp_c}`;
+        const minTempCurrentDay = `${Math.round(forecast.forecastday[0].day.mintemp_c)}`;
+        const maxTempCurrentDay = `${Math.round(forecast.forecastday[0].day.maxtemp_c)}`;
         
         $('.city-name').text(location.name);
         $('.temperature').text(temperature);
         $('.weather-text').text(conditionText);
-        $('.daily-temperature').text(`${minTempCurrentDay}/${maxTempCurrentDay}`);
+        $('.daily-temperature').text(`${minTempCurrentDay}/${maxTempCurrentDay}°C`);
 
         const forecastHtml = forecast.forecastday.slice(1, 8).map(day => `
             <div class="forecast-item">
             <div>${getDayOfWeek(day.date)}</div>
                 <img src="${day.day.condition.icon}">
-                <div class="forecast-daily-temp">${day.day.mintemp_c}/${day.day.maxtemp_c}°C</div>
+                <div class="forecast-daily-temp">${Math.round(day.day.mintemp_c)}/${Math.round(day.day.maxtemp_c)}°C</div>
             </div>
         `).join('');
 
