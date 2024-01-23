@@ -1,0 +1,80 @@
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.widget-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  border: none;
+}
+@media (min-width: 768px) {
+  .widget-container {
+    margin: auto;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 800px;
+    max-width: 728px;
+  }
+}
+
+.city-info {
+  text-align: center;
+}
+.city-info .city-name {
+  margin: 0;
+}
+.city-info .temperature {
+  font-size: 24px;
+  font-weight: bold;
+}
+.city-info .weather-icon {
+  margin-top: 10px;
+}
+
+.weekly-forecast {
+  margin-top: 20px;
+}
+.weekly-forecast .carousel-container {
+  overflow: hidden;
+}
+.weekly-forecast .carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.weekly-forecast .pagination {
+  margin-top: 10px;
+  text-align: center;
+}
+.weekly-forecast .pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+@media (min-width: 992px) {
+  .widget-container {
+    width: 100%;
+  }
+  .weekly-forecast {
+    display: flex;
+    justify-content: space-between;
+  }
+  .weekly-forecast .carousel-container {
+    width: 60%;
+  }
+  .weekly-forecast .pagination {
+    width: 30%;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

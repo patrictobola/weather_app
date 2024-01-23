@@ -1,0 +1,98 @@
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+@mixin d-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    height: 100vh;
+    @include d-flex;
+}
+
+.widget-container {
+    @include d-flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    border: none;
+
+    @media (min-width: map-get($breakpoints, md)) {
+        margin: auto;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        height: 800px;
+        max-width: calc(map-get($breakpoints, md) - 40px);
+    }
+}
+
+.city-info {
+    text-align: center;
+
+    .city-name {
+        margin: 0;
+    }
+
+    .temperature {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .weather-icon {
+        margin-top: 10px;
+    }
+}
+
+.weekly-forecast {
+    margin-top: 20px;
+
+    .carousel-container {
+        overflow: hidden;
+    }
+
+    .carousel {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .pagination {
+        margin-top: 10px;
+        text-align: center;
+
+        button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    }
+}
+
+@media (min-width: map-get($breakpoints, lg)) {
+    .widget-container {
+        width: 100%;
+    }
+
+    .weekly-forecast {
+        display: flex;
+        justify-content: space-between;
+
+        .carousel-container {
+            width: 60%;
+        }
+
+        .pagination {
+            width: 30%;
+        }
+    }
+}
