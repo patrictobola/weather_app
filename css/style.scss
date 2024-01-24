@@ -20,6 +20,10 @@ body {
     @include d-flex;
 }
 
+#weather-widget {
+    user-select: none;
+}
+
 .widget-container {
     @include d-flex;
     flex-direction: column;

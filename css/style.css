@@ -7,6 +7,14 @@ body {
   justify-content: center;
 }
 
+img {
+  user-select: none;
+}
+
+#weather-widget {
+  user-select: none;
+}
+
 .widget-container {
   display: flex;
   align-items: center;
