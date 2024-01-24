@@ -41,17 +41,23 @@ function updateWidget(city) {
     });
 }
 
+function updateBackground(city) {
+    const imageUrl = `url('/public/${city}.jpg')`;
+    $('#weather-widget').css('background-image', imageUrl);
+}
+
 $(document).ready(() => {
     updateWidget(cities[currentIndex]);
+    updateBackground(cities[currentIndex]);
 
     let startX = 0;
     let endX = 0;
 
-    $('#weather-widget').on('mousedown', event => {
-        startX = event.pageX;
+    $('#weather-widget').on('mousedown touchstart', (event) => {
+        startX = (event.type === 'mousedown') ? event.pageX : event.touches[0].pageX;
     });
-    $('#weather-widget').on('mouseup', event => {
-        endX = event.pageX;
+    $('#weather-widget').on('mouseup touchend', (event) => {
+        endX = (event.type === 'mouseup') ? event.pageX : event.changedTouches[0].pageX;
 
         const differenceX = endX - startX;
         const threshold = 100;
@@ -59,7 +65,9 @@ $(document).ready(() => {
         if (Math.abs(differenceX) > threshold) {
             if (differenceX > 0) {
             navigateNext();
-            } else navigatePrev();
+            } else {
+            navigatePrev();
+        }   updateBackground(cities[currentIndex]);
         }
     });
 
