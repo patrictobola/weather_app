@@ -30,6 +30,7 @@ body {
     user-select: none;
     background-size:cover;
     color: white;
+    position: relative;
 }
 .overlay {
     position: absolute;
@@ -52,7 +53,7 @@ body {
         margin: auto;
         border: 1px solid #ccc;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        max-height: 800px;
+        max-height: 1100px;
         height: 100vh;
         max-width: map-get($breakpoints, md);
     }
@@ -107,16 +108,10 @@ body {
         font-size: 11px;
         text-align: center;
     }
-
-
-    .pagination {
-        margin-top: 10px;
-        text-align: center;
-
-        button {
-            margin: 0 5px;
-            padding: 5px 10px;
-            cursor: pointer;
+    .forecast-item {
+        img {
+            width: calc(100vw / 8);
+            max-width: 95px;
         }
     }
 }
