@@ -14,8 +14,7 @@ $breakpoints: (
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
+    font-family: 'Roboto';
     height: 100vh;
     @include d-flex;
 }
@@ -31,6 +30,7 @@ body {
     max-width: 800px;
     padding: 1px;
     border: none;
+    height: 100%;
 
     @media (min-width: map-get($breakpoints, md)) {
         margin: auto;
@@ -44,14 +44,23 @@ body {
 
 .city-info {
     text-align: center;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     .city-name {
         margin: 0;
+        font-weight: 500;
+        font-size: 30px;
     }
-
+    .weather-text {
+        font-weight: 200;
+        font-size: 14px;
+    }
     .temperature {
-        font-size: 24px;
-        font-weight: bold;
+        font-size: 100px;
+        letter-spacing: -0.1em;
     }
 
     .weather-icon {
@@ -61,6 +70,7 @@ body {
 
 .weekly-forecast {
     margin-top: 20px;
+    height: 50%;
 
     .carousel-container {
         overflow: hidden;
@@ -71,8 +81,14 @@ body {
         transition: transform 0.5s ease-in-out;
     }
 
+    .forecast-text {
+        text-align: center;
+        font-weight: 500;
+    }
+
     .forecast-daily-temp {
-        font-size: 10px;
+        font-size: 11px;
+        text-align: center;
     }
 
 
