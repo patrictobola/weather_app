@@ -15,6 +15,17 @@ function getWeather(city) {
     const apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=8&aqi=no&alerts=no`;
     return $.get(apiUrl);
 }
+function updatePagination(){
+    const paginationContainer = $('.pagination');
+    paginationContainer.empty();
+
+    cities.forEach((city, index) => {
+        const iconClass = (index === currentIndex) ? 'fas fa-circle' : 'far fa-circle';
+        const paginationIcon = $(`<span class="${iconClass} icon-spacing"></span>`)
+        paginationContainer.append(paginationIcon);
+    })
+
+}
 
 function updateWidget(city) {
     getWeather(city).done((data) => {
@@ -39,6 +50,7 @@ function updateWidget(city) {
 
         $('.carousel').html(forecastHtml);
     });
+    updatePagination();
 }
 
 function updateBackground(city) {
@@ -46,9 +58,11 @@ function updateBackground(city) {
     $('#weather-widget').css('background-image', imageUrl);
 }
 
+
 $(document).ready(() => {
     updateWidget(cities[currentIndex]);
     updateBackground(cities[currentIndex]);
+    updatePagination();
 
     let startX = 0;
     let endX = 0;
