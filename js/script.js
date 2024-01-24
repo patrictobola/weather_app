@@ -41,12 +41,6 @@ function updateWidget(city) {
     });
 }
 
-function updatePagination() {
-    const totalCities = cities.length;
-    $('.prev').prop('disabled', currentIndex === 0);
-    $('.next').prop('disabled', currentIndex === totalCities - 1);
-}
-
 $(document).ready(() => {
     updateWidget(cities[currentIndex]);
 
@@ -54,7 +48,9 @@ $(document).ready(() => {
         if (currentIndex > 0) {
             currentIndex--;
             updateWidget(cities[currentIndex]);
-            updatePagination();
+        } else {
+            currentIndex = cities.length - 1;
+            updateWidget(cities[currentIndex]);
         }
     });
 
@@ -63,7 +59,9 @@ $(document).ready(() => {
         if (currentIndex < totalCities - 1) {
             currentIndex++;
             updateWidget(cities[currentIndex]);
-            updatePagination();
+        } else {
+            currentIndex = 0
+            updateWidget(cities[currentIndex]);
         }
     });
 });
