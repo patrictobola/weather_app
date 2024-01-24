@@ -50,6 +50,7 @@ function updateWidget(city) {
 
         $('.carousel').html(forecastHtml);
     });
+    updateBackground(city);
     updatePagination();
 }
 
@@ -61,7 +62,6 @@ function updateBackground(city) {
 
 $(document).ready(() => {
     updateWidget(cities[currentIndex]);
-    updateBackground(cities[currentIndex]);
     updatePagination();
 
     let startX = 0;
@@ -78,33 +78,25 @@ $(document).ready(() => {
 
         if (Math.abs(differenceX) > threshold) {
             if (differenceX > 0) {
-            navigateNext();
+            navigate('next');
             } else {
-            navigatePrev();
-        }   updateBackground(cities[currentIndex]);
+                navigate('prev');
+            }
         }
     });
 
     
 
-    function navigateNext() {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateWidget(cities[currentIndex]);
-        } else {
-            currentIndex = cities.length - 1;
-            updateWidget(cities[currentIndex]);
-        }
-    };
-
-    function navigatePrev() {
+    function navigate(direction) {
         const totalCities = cities.length;
-        if (currentIndex < totalCities - 1) {
-            currentIndex++;
-            updateWidget(cities[currentIndex]);
-        } else {
-            currentIndex = 0
-            updateWidget(cities[currentIndex]);
+    
+        if (direction === 'next') {
+            currentIndex = (currentIndex > 0) ? (currentIndex - 1) : (totalCities - 1);
+        } else if (direction === 'prev') {
+            currentIndex = (currentIndex < totalCities - 1) ? (currentIndex + 1) : 0;
         }
-    };
+    
+        updateWidget(cities[currentIndex]);
+    }
+    
 });
