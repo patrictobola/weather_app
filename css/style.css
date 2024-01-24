@@ -107,8 +107,23 @@ body {
   text-align: center;
 }
 .weekly-forecast .forecast-item img {
-  width: 12.5vw;
-  max-width: 95px;
+  width: 14.2857142857vw;
+  max-width: 75px;
+}
+
+@media (orientation: landscape) {
+  .widget-container {
+    width: 100%;
+    max-width: none;
+  }
+  .city-info .temperature {
+    font-size: 50px;
+  }
+}
+@media (orientation: landscape) and (min-height: 576px) {
+  .city-info .temperature {
+    font-size: 100px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

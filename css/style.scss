@@ -12,13 +12,15 @@ $breakpoints: (
     align-items: center;
     justify-content: center;
 }
-
 /* Reset  */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
+
+
+
 
 body {
     font-family: 'Roboto';
@@ -120,9 +122,26 @@ body {
     }
     .forecast-item {
         img {
-            width: calc(100vw / 8);
-            max-width: 95px;
+            width: calc(100vw / 7);
+            max-width: 75px;
         }
     }
 }
-
+@media (orientation: landscape) {
+    .widget-container {
+        width: 100%;
+        max-width: none;
+    }
+    .city-info {
+        .temperature {
+            font-size: 50px;
+        }
+    }
+    @media (min-height: map-get($breakpoints, sm)) {
+        .city-info {
+            .temperature {
+                font-size: 100px;
+            }
+        }
+    }
+}
